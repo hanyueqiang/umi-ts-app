@@ -1,4 +1,5 @@
 import { defineConfig } from 'umi';
+import { resolve } from 'path';
 
 export default defineConfig({
   title: '管理平台业务模版',
