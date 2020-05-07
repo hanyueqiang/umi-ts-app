@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './index.less';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import HeaderContent from './header';
 import MenuContent from './menu';
-const { SubMenu } = Menu;
+import styles from './index.less';
 
 const { Header, Content, Footer, Sider } = Layout;
 
