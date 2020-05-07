@@ -1,13 +1,19 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-  title: '管理平台',
+  title: '管理平台业务模版',
   hash: true,
   antd: {},
   dva: {
     hmr: true,
   },
-  locale: {},
+  locale: {
+    // default zh-CN
+    default: 'zh-CN',
+    // default true, when it is true, will use `navigator.language` overwrite default
+    antd: true,
+    baseNavigator: true,
+  },
   // 是否启用按需加载
   // dynamicImport: {},
   // 设置 node_modules 目录下依赖文件的编译方式
