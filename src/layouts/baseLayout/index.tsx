@@ -10,29 +10,16 @@ export default (props: any) => {
   console.log(props);
   return (
     <Layout className={styles.container}>
-      <Header
-        style={{ background: '#fff', padding: '0 16px' }}
-        className={styles.contentHeader}
-      >
+      <Header className={styles.contentHeader}>
         <HeaderContent />
       </Header>
       <Layout style={{ padding: 0 }}>
         <Sider width={200}>
           <MenuContent />
         </Sider>
-        <Content
-          className={styles.content}
-          style={{
-            margin: 16,
-            padding: 24,
-            background: '#fff',
-            minHeight: 280,
-          }}
-        >
-          {props.children}
-        </Content>
+        <Content className={styles.content}>{props.children}</Content>
       </Layout>
-      <Footer className={styles.footerContent}>管理平台通用业务模版</Footer>
+      {/* <Footer className={styles.footerContent}>管理平台通用业务模版</Footer> */}
     </Layout>
   );
 };

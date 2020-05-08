@@ -22,3 +22,10 @@ export interface ConnectState {
 export interface Route {
   routes?: Route[];
 }
+export interface MenusDate {
+  title: string;
+  link: string;
+  key: string;
+  icon: string;
+  children: any;
+}
