@@ -1,6 +1,7 @@
 import { GlobalModelState } from './global';
+import { LoginModelState } from './login';
 
-export { GlobalModelState };
+export { GlobalModelState, LoginModelState };
 
 export interface Loading {
   global: boolean;
@@ -10,12 +11,13 @@ export interface Loading {
     menu?: boolean;
     setting?: boolean;
     user?: boolean;
-    login?: boolean;
+    login: boolean;
   };
 }
 
 export interface ConnectState {
   global: GlobalModelState;
+  login: LoginModelState;
   loading: Loading;
 }
 
@@ -28,4 +30,10 @@ export interface MenusDate {
   key: string;
   icon: string;
   children: any;
+}
+export interface LoginUserInfoState {
+  id: string;
+  name: string;
+  role?: string;
+  [key: string]: any;
 }

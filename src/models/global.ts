@@ -1,4 +1,4 @@
-import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
+import { Effect, Reducer, Subscription } from 'umi';
 import { queryNotices } from '@/services/user';
 import menusSource from '../../config/menu.config';
 import { ConnectState, MenusDate } from './connect.d';
@@ -13,7 +13,6 @@ export interface GlobalModelType {
   state: GlobalModelState;
   effects: {
     query: Effect;
-    fetchNotices: Effect;
   };
   reducers: {
     save: Reducer<GlobalModelState>;
@@ -30,10 +29,9 @@ const GlobalModel: GlobalModelType = {
     menusData: menusSource,
   },
   effects: {
-    *query({ payload }, { call, put, select }) {},
-    *fetchNotices({ payload }, { call, put, select }) {
-      // const { menusData } = yield select(state => state.global);
-      const data = yield call(queryNotices);
+    *query({ payload }, { call, put, select }) {
+      const { name } = yield select((state: ConnectState) => state.global);
+      const data = yield call(queryNotices, { ...payload, name });
       yield put({
         type: 'save',
         payload: {
@@ -59,7 +57,7 @@ const GlobalModel: GlobalModelType = {
       return history.listen(({ pathname }) => {
         if (pathname === '/') {
           dispatch({
-            type: 'query',
+            type: 'query1',
           });
         }
       });
