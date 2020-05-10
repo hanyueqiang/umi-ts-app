@@ -22,7 +22,7 @@ export interface SubmitValProps {
 const Login: FC<LoginLayoutProps> = ({ dispatch }) => {
   function handleSubmit(values: SubmitValProps) {
     dispatch({
-      type: 'login/login',
+      type: 'login/queryLogin',
       payload: {
         ...values,
       },

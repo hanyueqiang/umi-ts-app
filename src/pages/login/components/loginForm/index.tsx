@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import { Form, Input, Button } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  LockOutlined,
+  ExclamationCircleOutlined,
+} from '@ant-design/icons';
 
 import { connect, Dispatch } from 'umi';
 import { LoginModelState, Loading } from '@/models/connect';
@@ -8,8 +12,7 @@ import { LoginModelState, Loading } from '@/models/connect';
 import { SubmitValProps } from '../../index';
 
 const formItemLayout = {
-  labelCol: { span: 6 },
-  wrapperCol: { span: 14 },
+  wrapperCol: { span: 24 },
 };
 
 interface LoginFormProps {
@@ -28,13 +31,14 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
   onSubmit,
   loading,
 }) => {
+  const { isError } = login;
+
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
     onSubmit(values);
   };
 
   const handleChange = () => {
-    const { isError } = login;
     if (isError) {
       dispatch({
         type: 'login/save',
@@ -47,6 +51,14 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
 
   return (
     <Form name="validate_other" {...formItemLayout} onFinish={onFinish}>
+      <div style={{ color: '#f5222d', marginBottom: 8 }}>
+        {isError && (
+          <span>
+            <ExclamationCircleOutlined style={{ marginRight: 4 }} />
+            用户名或密码错误，请核对后重新输入
+          </span>
+        )}
+      </div>
       <Form.Item
         name="username"
         rules={[
@@ -83,8 +95,13 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
         />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
-        <Button type="primary" htmlType="submit" loading={loading}>
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          style={{ width: '100%' }}
+        >
           {loading ? '登录中' : '登录'}
         </Button>
       </Form.Item>

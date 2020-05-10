@@ -1,5 +1,6 @@
-import { Effect, Reducer } from 'umi';
-import { queryNotices } from '@/services/user';
+import { Effect, Reducer, history } from 'umi';
+import { message } from 'antd';
+import { queryLogin } from '@/services/login';
 
 import { ConnectState, LoginUserInfoState } from './connect.d';
 
@@ -32,23 +33,38 @@ const LoginModel: LoginModelType = {
     isError: false,
   },
   effects: {
+    *queryLogin({ payload }, { call, put }) {
+      // const { name } = yield select((state: ConnectState) => state.global);
+      const response = yield call(queryLogin, { ...payload });
+      if (response.status === 'ok') {
+        yield put({
+          type: 'save',
+          payload: {
+            userInfo: response.currentAuthority,
+          },
+        });
+        localStorage.setItem(
+          'userid',
+          JSON.stringify(response.currentAuthority.userid),
+        );
+        message.success('登录成功！');
+        history.replace('/');
+      } else {
+        yield put({
+          type: 'save',
+          payload: {
+            isError: true,
+          },
+        });
+      }
+    },
     *getUserInfo({ payload }, { call, put, select }) {
       const { name } = yield select((state: ConnectState) => state.global);
-      const data = yield call(queryNotices, { ...payload, name });
+      const data = yield call(queryLogin, { ...payload, name });
       yield put({
         type: 'save',
         payload: {
-          userInfo: data.name,
-        },
-      });
-    },
-    *queryLogin({ payload }, { call, put, select }) {
-      const { name } = yield select((state: ConnectState) => state.global);
-      const data = yield call(queryNotices, { ...payload, name });
-      yield put({
-        type: 'save',
-        payload: {
-          userInfo: data.name,
+          userInfo: data,
         },
       });
     },
