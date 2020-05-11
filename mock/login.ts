@@ -20,7 +20,7 @@ export default {
             userid: 'abc123efdd',
           },
         });
-      }, 1500);
+      }, 1000);
       return;
     }
     if (password === '123456' && username === 'user') {

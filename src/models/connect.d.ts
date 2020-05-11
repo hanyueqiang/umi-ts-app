@@ -1,7 +1,8 @@
 import { GlobalModelState } from './global';
 import { LoginModelState } from './login';
+import { QueryTableState } from './queryTable';
 
-export { GlobalModelState, LoginModelState };
+export { GlobalModelState, LoginModelState, QueryTableState };
 
 export interface Loading {
   global: boolean;
