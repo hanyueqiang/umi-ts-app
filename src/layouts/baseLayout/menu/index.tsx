@@ -46,7 +46,7 @@ const MenuContent: FC<BasicLayoutProps> = ({ global }) => {
       selectedKeys={[selectKey || '']}
       defaultOpenKeys={[openKey]}
       mode="inline"
-      theme="dark"
+      theme="light"
       className="progressbar"
     >
       {renderMenu(menusData)}

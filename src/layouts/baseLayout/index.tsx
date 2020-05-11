@@ -7,14 +7,13 @@ import styles from './index.less';
 const { Header, Content, Sider } = Layout;
 
 export default (props: any) => {
-  console.log(props);
   return (
     <Layout className={styles.container}>
       <Header className={styles.contentHeader}>
         <HeaderContent />
       </Header>
       <Layout style={{ padding: 0 }}>
-        <Sider width={200}>
+        <Sider width={200} style={{ background: '#fff' }}>
           <MenuContent />
         </Sider>
         <Content className={styles.content}>{props.children}</Content>
