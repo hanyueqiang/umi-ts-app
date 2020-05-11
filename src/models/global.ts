@@ -1,18 +1,19 @@
 import { Effect, Reducer, Subscription } from 'umi';
-import { queryNotices } from '@/services/user';
+import { queryUserInfo } from '@/services/login';
 import menusSource from '../../config/menu.config';
-import { ConnectState, MenusDate } from './connect.d';
+import { MenusDate, LoginUserInfoState } from './connect.d';
 
 export interface GlobalModelState {
   name: string;
   menusData: MenusDate[];
+  userInfo: LoginUserInfoState;
 }
 
 export interface GlobalModelType {
   namespace: 'global';
   state: GlobalModelState;
   effects: {
-    query: Effect;
+    queryUserInfo: Effect;
   };
   reducers: {
     save: Reducer<GlobalModelState>;
@@ -27,17 +28,23 @@ const GlobalModel: GlobalModelType = {
   state: {
     name: '',
     menusData: menusSource,
+    userInfo: {
+      id: '',
+      name: '',
+    },
   },
   effects: {
-    *query({ payload }, { call, put, select }) {
-      const { name } = yield select((state: ConnectState) => state.global);
-      const data = yield call(queryNotices, { ...payload, name });
-      yield put({
-        type: 'save',
-        payload: {
-          name: data.name,
-        },
-      });
+    *queryUserInfo({ payload }, { call, put }) {
+      const userid = localStorage.getItem('userid');
+      const response = yield call(queryUserInfo, { ...payload, userid });
+      if (response.status === 'ok') {
+        yield put({
+          type: 'save',
+          payload: {
+            userInfo: response.data,
+          },
+        });
+      }
     },
   },
   reducers: {
@@ -55,9 +62,12 @@ const GlobalModel: GlobalModelType = {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname }) => {
-        if (pathname === '/') {
+        const reg = /^\/login/g;
+        if (!reg.test(pathname)) {
+          console.log('fetch');
           dispatch({
-            type: 'query1',
+            type: 'queryUserInfo',
+            payload: {},
           });
         }
       });

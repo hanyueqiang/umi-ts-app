@@ -1,23 +1,39 @@
 export default [
   {
-    title: '开发环境',
-    link: '/develop',
-    key: 'develop',
+    title: '首页',
+    link: '/dashboard',
+    key: 'dashboard',
     icon: '',
     children: [],
   },
   {
-    title: '测试环境',
-    link: '/test',
-    key: 'test',
+    title: '列表页',
+    link: '/list',
+    key: 'list',
     icon: '',
-    children: [],
+    children: [
+      {
+        title: '查询列表',
+        link: '/list/queryTable',
+        key: 'queryTable',
+        icon: '',
+        children: [],
+      },
+    ],
   },
   {
-    title: '产品环境',
-    link: '/acceptance',
-    key: 'acceptance',
+    title: '个人页',
+    link: '/account',
+    key: 'account',
     icon: '',
-    children: [],
+    children: [
+      {
+        title: '个人页',
+        link: '/account/settings',
+        key: 'settings',
+        icon: '',
+        children: [],
+      },
+    ],
   },
 ];

@@ -1,8 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Request, Response } from 'express';
 
-function getFakeCaptcha(req: Request, res: Response) {
-  return res.json('captcha-xxx');
+function getLogout(req: Request, res: Response) {
+  return res.json({
+    status: 'ok',
+    msg: '成功',
+  });
 }
 
 export default {
@@ -17,7 +20,7 @@ export default {
             userid: 'abc123efdd',
           },
         });
-      }, 3000);
+      }, 1500);
       return;
     }
     if (password === '123456' && username === 'user') {
@@ -35,5 +38,5 @@ export default {
       currentAuthority: 'guest',
     });
   },
-  'GET  /api/login/captcha': getFakeCaptcha,
+  'GET  /api/logout': getLogout,
 };

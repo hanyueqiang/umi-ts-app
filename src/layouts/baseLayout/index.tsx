@@ -4,7 +4,7 @@ import HeaderContent from './header';
 import MenuContent from './menu';
 import styles from './index.less';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 export default (props: any) => {
   console.log(props);
