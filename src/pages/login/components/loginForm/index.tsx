@@ -51,7 +51,7 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
 
   return (
     <Form name="validate_other" {...formItemLayout} onFinish={onFinish}>
-      <div style={{ color: '#f5222d', marginBottom: 8 }}>
+      <div style={{ color: '#f5222d', marginBottom: 8, height: 26 }}>
         {isError && (
           <span>
             <ExclamationCircleOutlined style={{ marginRight: 4 }} />
@@ -71,7 +71,7 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
         <Input
           prefix={<UserOutlined />}
           onChange={handleChange}
-          placeholder="请输入用户名"
+          placeholder="请输入用户名: admin"
         />
       </Form.Item>
       <Form.Item
@@ -91,7 +91,7 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
           type="password"
           autoComplete="off"
           onChange={handleChange}
-          placeholder="请输入密码"
+          placeholder="请输入密码: 123456"
         />
       </Form.Item>
 
