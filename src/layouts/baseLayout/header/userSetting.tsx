@@ -24,7 +24,6 @@ const UserSettingLayout: FC<HeaderLayoutProps> = ({ global, dispatch }) => {
     }
   }
   const { userInfo } = global;
-  console.log(userInfo);
 
   const menu = (
     <Menu onClick={handleSubmit}>
@@ -47,7 +46,7 @@ const UserSettingLayout: FC<HeaderLayoutProps> = ({ global, dispatch }) => {
       }}
     >
       <Dropdown overlay={menu} placement="bottomRight">
-        <span style={{ cursor: 'pointer' }}>
+        <span style={{ cursor: 'pointer', color: '#fff', fontSize: 16 }}>
           {userInfo.username} <DownOutlined />
         </span>
       </Dropdown>

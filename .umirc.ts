@@ -25,7 +25,8 @@ export default defineConfig({
     ie: 11,
   },
   theme: {
-    '@primary-color': '#1DA57A',
+    // '@primary-color': '#1DA57A',
+    '@primary-color': '#1abc9c',
   },
   proxy: {
     '/api': {

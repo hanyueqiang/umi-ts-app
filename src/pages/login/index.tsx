@@ -5,8 +5,6 @@ import { ConnectState } from '@/models/connect';
 import LoginForm from './components/loginForm';
 import styles from './index.less';
 
-const logoTitle = require('@/assets/logotitle.png');
-
 export interface LoginLayoutProps {
   dispatch: Dispatch;
   login: ConnectState;
@@ -39,8 +37,10 @@ const Login: FC<LoginLayoutProps> = ({ dispatch }) => {
                 className={styles.logo}
                 style={{ textAlign: 'center' }}
               >
-                <span style={{ fontSize: 22, fontWeight: 600 }}>
-                  智慧服务前端通用业务模板
+                <span
+                  style={{ fontSize: 22, fontWeight: 600, color: '#1abc9c' }}
+                >
+                  前端通用业务模板
                 </span>
               </Col>
             </Row>

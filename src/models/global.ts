@@ -64,7 +64,6 @@ const GlobalModel: GlobalModelType = {
       return history.listen(({ pathname }) => {
         const reg = /^\/login/g;
         if (!reg.test(pathname)) {
-          console.log('fetch');
           dispatch({
             type: 'queryUserInfo',
             payload: {},

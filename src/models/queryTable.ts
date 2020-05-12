@@ -1,10 +1,14 @@
-import { Effect, Reducer, history } from 'umi';
-import { message } from 'antd';
-import { queryLogin } from '@/services/login';
+import { Effect, Reducer } from 'umi';
+import { queryTableList } from '@/services/list';
+
+interface TableListProps {
+  [key: string]: any;
+}
 
 export interface QueryTableState {
   searchContentVal: string;
   statusVal: string;
+  queryTableSource: TableListProps[];
 }
 
 export interface QueryTableType {
@@ -25,29 +29,22 @@ const QueryTableModel: QueryTableType = {
   state: {
     searchContentVal: '',
     statusVal: '',
+    queryTableSource: [],
   },
   effects: {
-    *queryTableList({ payload }, { call, put }) {
-      // const { name } = yield select((state: ConnectState) => state.global);
-      const response = yield call(queryLogin, { ...payload });
+    *queryTableList(_, { call, put, select }) {
+      const { searchContentVal, statusVal } = yield select(
+        (state: QueryTableState) => state,
+      );
+      const response = yield call(queryTableList, {
+        searchContentVal,
+        statusVal,
+      });
       if (response.status === 'ok') {
         yield put({
           type: 'save',
           payload: {
-            userInfo: response.currentAuthority,
-          },
-        });
-        localStorage.setItem(
-          'userid',
-          JSON.stringify(response.currentAuthority.userid),
-        );
-        message.success('登录成功！');
-        history.replace('/');
-      } else {
-        yield put({
-          type: 'save',
-          payload: {
-            isError: true,
+            queryTableSource: response.data,
           },
         });
       }

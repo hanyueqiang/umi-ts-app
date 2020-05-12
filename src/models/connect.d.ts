@@ -13,6 +13,7 @@ export interface Loading {
     setting?: boolean;
     user?: boolean;
     login: boolean;
+    queryTable: boolean;
   };
 }
 

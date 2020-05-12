@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
 import { Input, Select, Button } from 'antd';
-import { connect, Dispatch } from 'umi';
+import { connect } from 'umi';
 import { SearchOutlined } from '@ant-design/icons';
 import { QueryTableState } from '@/models/connect';
+import { QueryTableProps } from '../queryTable';
 
 const { Option } = Select;
-
-interface QueryTableProps {
-  dispatch: Dispatch;
-  queryTable: QueryTableState;
-}
 
 const ListFilterRegion: FC<QueryTableProps> = ({ dispatch, queryTable }) => {
   const { searchContentVal, statusVal } = queryTable;
@@ -39,7 +35,7 @@ const ListFilterRegion: FC<QueryTableProps> = ({ dispatch, queryTable }) => {
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: 24 }}>
       <Input
         placeholder="请输入搜索内容"
         value={searchContentVal}
