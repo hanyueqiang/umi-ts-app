@@ -40,7 +40,7 @@ const Login: FC<LoginLayoutProps> = ({ dispatch }) => {
                 <span
                   style={{ fontSize: 22, fontWeight: 600, color: '#1abc9c' }}
                 >
-                  前端通用业务模板
+                  数据管理平台
                 </span>
               </Col>
             </Row>

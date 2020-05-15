@@ -64,7 +64,7 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
         rules={[
           {
             required: true,
-            message: '请输入用户名!',
+            message: '请输入用户名',
           },
         ]}
       >
@@ -77,7 +77,7 @@ const LoginForm: FC<LoginFormProps & ParentProps> = ({
       <Form.Item
         name="password"
         rules={[
-          { required: true, message: '请输入密码!' },
+          { required: true, message: '请输入密码' },
           { min: 6, message: '密码最少6位数' },
           { max: 18, message: '密码最多18位数' },
           {
