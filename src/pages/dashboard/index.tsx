@@ -75,7 +75,9 @@ const Dashboard = () => {
   }, []);
   return (
     <>
-      <div id="container">0</div>
+      <div id="container" style={{ width: 400, height: 400 }}>
+        {' '}
+      </div>
     </>
   );
 };
