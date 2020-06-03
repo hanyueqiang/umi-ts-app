@@ -65,12 +65,6 @@ const Dashboard = () => {
       .color('city')
       .shape('smooth');
 
-    chart
-      .point()
-      .position('month*temperature')
-      .color('city')
-      .shape('circle');
-
     chart.render();
   }, []);
   return (
