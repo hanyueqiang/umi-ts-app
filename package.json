@@ -13,7 +13,6 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
     "*.{js,jsx,less,md,json}": [
       "prettier --write"
     ],
@@ -27,6 +26,7 @@
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.1.3",
     "antd": "^4.2.0",
+    "echarts": "^4.8.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
