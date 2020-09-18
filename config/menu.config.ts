@@ -21,4 +21,19 @@ export default [
       },
     ],
   },
+  {
+    title: '功能页',
+    link: '/func',
+    key: 'func',
+    icon: '',
+    children: [
+      {
+        title: '拖拽排序',
+        link: '/func/draggable',
+        key: 'draggable',
+        icon: '',
+        children: [],
+      },
+    ],
+  },
 ];

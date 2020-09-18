@@ -21,9 +21,9 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  targets: {
-    ie: 11,
-  },
+  // targets: {
+  //   ie: 11,
+  // },
   theme: {
     '@primary-color': '#1DA57A',
   },
