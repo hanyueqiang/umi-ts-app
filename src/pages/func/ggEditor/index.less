@@ -1,0 +1,42 @@
+.editor {
+  position: relative;
+  padding-top: 60px;
+  display: flex;
+  flex: 1;
+  background-color: #f4f6f8;
+  height: 100%;
+  .editorBd {
+    flex: 1;
+    // height: 100%;
+  }
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+}
+.toolPanel {
+  display: flex;
+}
+.tool,
+.toolDrag {
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tool:hover,
+toolDrag:hover {
+  background: #aaa;
+}
+
+.toolDrag {
+  cursor: move;
+}

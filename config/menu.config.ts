@@ -34,6 +34,13 @@ export default [
         icon: '',
         children: [],
       },
+      {
+        title: 'gg-editor',
+        link: '/func/ggEditor',
+        key: 'ggEditor',
+        icon: '',
+        children: [],
+      },
     ],
   },
 ];
