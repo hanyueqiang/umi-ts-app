@@ -65,7 +65,7 @@ const VisitCard: FC<VisitCardProps> = ({ totalData, loading }) => {
               <img src={userImg} height="70" />
             </div>
             <div className={styles.statisTitle}>
-              <div>随访人员</div>
+              <div>人员总数</div>
               <div className={styles.statisCount}>{headCount || '0'}</div>
             </div>
           </Skeleton>
@@ -78,7 +78,7 @@ const VisitCard: FC<VisitCardProps> = ({ totalData, loading }) => {
               <img src={surveyImg} height="70" />
             </div>
             <div className={styles.statisTitle}>
-              <div>随访问卷</div>
+              <div>阅读量</div>
               <div className={styles.statisCount}>{surveyCount || '0'}</div>
             </div>
           </Skeleton>
@@ -91,7 +91,7 @@ const VisitCard: FC<VisitCardProps> = ({ totalData, loading }) => {
               <img src={totalImg} height="70" />
             </div>
             <div className={styles.statisTitle}>
-              <div>随访总量</div>
+              <div>订阅量</div>
               <Tooltip placement="bottomLeft" title={content2}>
                 <div className={styles.statisCount}>{totalCount || '0'}</div>
               </Tooltip>
