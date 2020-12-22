@@ -1,26 +1,20 @@
 .editor {
-  position: relative;
-  padding-top: 60px;
   display: flex;
-  flex: 1;
   background-color: #f4f6f8;
-  height: 100%;
+  flex-direction: column;
+  .toolbar {
+    height: 60px;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+  }
   .editorBd {
     flex: 1;
-    // height: 100%;
+    height: 100%;
+    overflow: auto;
   }
 }
 
-.toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: #ccc;
-  display: flex;
-  align-items: center;
-}
 .toolPanel {
   display: flex;
 }
