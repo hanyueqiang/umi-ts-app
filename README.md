@@ -59,10 +59,13 @@ $ yarn build
 更多命令可在[package.json](./package.json)中查看
 
 ## 项目预览
-
+#### 登录
 ![login page](/public/login.png)
+#### Table列表
 ![table page](/public/table.png)
 
+#### gg_editor
+![table page](/public/gg_editor.png)
 ## 支持环境
 
 ## Browsers support
