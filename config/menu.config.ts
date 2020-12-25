@@ -41,6 +41,13 @@ export default [
         icon: '',
         children: [],
       },
+      {
+        title: 'antvX6',
+        link: '/func/antvX6',
+        key: 'antvX6',
+        icon: '',
+        children: [],
+      },
     ],
   },
 ];
