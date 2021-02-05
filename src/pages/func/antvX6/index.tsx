@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
-import { Graph, Shape } from '@antv/x6';
+import React, { useEffect, useRef } from 'react';
+import { Graph, Shape, Dom, Addon } from '@antv/x6';
 import { simpleData1 } from './tools';
 
+import styles from './index.less';
+
+const { Dnd } = Addon;
+
 const AntvX6Comp = () => {
+  const x6Ref = useRef<any>(null);
+  const x6Dnd = useRef<any>(null);
   useEffect(() => {
     const graph = new Graph({
       container: document.getElementById('container') as HTMLElement,
@@ -28,6 +34,7 @@ const AntvX6Comp = () => {
         type: 'mesh', // 'dot' | 'fixedDot' | 'mesh'  // 渲染类型
       },
     });
+    x6Ref.current = graph;
     const rect = new Shape.Rect({
       id: 'node1',
       x: 40,
@@ -74,9 +81,69 @@ const AntvX6Comp = () => {
     graph.scale(0.75, 0.75);
     // 平移画布
     graph.translate(80, 40);
+    x6Dnd.current = new Dnd({
+      target: graph,
+      scaled: false,
+      animation: true,
+      validateNode(droppingNode, options) {
+        return true;
+      },
+    });
   }, []);
 
-  return <div id="container"></div>;
+  const startDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const target = e.currentTarget;
+    const type = target.getAttribute('data-type');
+    const node =
+      type === 'rect'
+        ? x6Ref.current.createNode({
+            width: 100,
+            height: 40,
+            attrs: {
+              label: {
+                text: 'Rect',
+                fill: '#6a6c8a',
+              },
+              body: {
+                stroke: '#31d0c6',
+                strokeWidth: 2,
+              },
+            },
+          })
+        : x6Ref.current.createNode({
+            width: 60,
+            height: 60,
+            shape: 'html',
+            html: () => {
+              const wrap = document.createElement('div');
+              wrap.style.width = '100%';
+              wrap.style.height = '100%';
+              wrap.style.display = 'flex';
+              wrap.style.alignItems = 'center';
+              wrap.style.justifyContent = 'center';
+              wrap.style.border = '2px solid rgb(49, 208, 198)';
+              wrap.style.background = '#fff';
+              wrap.style.borderRadius = '100%';
+              wrap.innerText = 'Circle';
+              return wrap;
+            },
+          });
+    x6Dnd.current.start(node, e.nativeEvent as any);
+  };
+
+  return (
+    <div className={styles.x6_process}>
+      <div className="dnd_wrap">
+        <div data-type="rect" className="dnd-rect" onMouseDown={startDrag}>
+          Rect
+        </div>
+        <div data-type="circle" className="dnd-circle" onMouseDown={startDrag}>
+          Circle
+        </div>
+      </div>
+      <div id="container"></div>
+    </div>
+  );
 };
 
 export default AntvX6Comp;
