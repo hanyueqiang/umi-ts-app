@@ -29,8 +29,8 @@ const GlobalModel: GlobalModelType = {
     name: '',
     menusData: menusSource,
     userInfo: {
-      id: '',
-      name: '',
+      userid: '',
+      username: '',
     },
   },
   effects: {

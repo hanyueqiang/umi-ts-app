@@ -34,7 +34,7 @@ const QueryTableModel: QueryTableType = {
   effects: {
     *queryTableList(_, { call, put, select }) {
       const { searchContentVal, statusVal } = yield select(
-        (state: QueryTableState) => state,
+        (state: any) => state.queryTable,
       );
       const response = yield call(queryTableList, {
         searchContentVal,

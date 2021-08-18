@@ -28,8 +28,8 @@ const LoginModel: LoginModelType = {
   namespace: 'login',
   state: {
     userInfo: {
-      id: '',
-      name: '',
+      userid: '',
+      username: '',
     },
     isError: false,
   },
