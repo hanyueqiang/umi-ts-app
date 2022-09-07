@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 import React, { FC, Suspense, useEffect } from 'react';
 import { connect, Dispatch } from 'umi';
 import { Loading, DashboardState } from '@/models/connect';
-import PageLoading from './components/PageLoading';
+import PageLoading from './components/pageLoading';
 
 const VisitCard = React.lazy(() => import('./components/visitCard'));
 interface DashboardProps {
