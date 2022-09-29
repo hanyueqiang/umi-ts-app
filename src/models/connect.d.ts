@@ -36,8 +36,8 @@ export interface MenusDate {
   children: any;
 }
 export interface LoginUserInfoState {
-  id: string;
-  name: string;
+  username: string;
+  userid: string;
   role?: string;
   [key: string]: any;
 }

@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { connect, Dispatch } from 'umi';
-import { ClickParam } from 'antd/es/menu';
+import { MenuInfo } from 'rc-menu/lib/interface';
 import { Dropdown, Menu } from 'antd';
 import {
   SettingOutlined,
   LogoutOutlined,
   DownOutlined,
 } from '@ant-design/icons';
-import { LoginModelState, GlobalModelState } from '@/models/connect';
+import { GlobalModelState } from '@/models/connect';
 
 export interface HeaderLayoutProps {
   dispatch: Dispatch;
@@ -15,7 +15,7 @@ export interface HeaderLayoutProps {
 }
 
 const UserSettingLayout: FC<HeaderLayoutProps> = ({ global, dispatch }) => {
-  function handleSubmit(event: ClickParam) {
+  function handleSubmit(event: MenuInfo) {
     const { key } = event;
     if (key === 'logout') {
       dispatch({
@@ -56,10 +56,8 @@ const UserSettingLayout: FC<HeaderLayoutProps> = ({ global, dispatch }) => {
 
 export default connect(
   ({
-    login,
     global,
   }: {
-    login: LoginModelState;
     global: GlobalModelState;
-  }) => ({ login, global }),
+  }) => ({ global }),
 )(UserSettingLayout);

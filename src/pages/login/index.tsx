@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { connect, Dispatch } from 'umi';
 import { Row, Col } from 'antd';
-import { ConnectState } from '@/models/connect';
 import LoginForm from './components/loginForm';
 import styles from './index.less';
 
 export interface LoginLayoutProps {
   dispatch: Dispatch;
-  login: ConnectState;
   loading: boolean;
 }
 
@@ -17,6 +15,7 @@ export interface SubmitValProps {
 }
 
 const Login: FC<LoginLayoutProps> = ({ dispatch }) => {
+  
   function handleSubmit(values: SubmitValProps) {
     dispatch({
       type: 'login/queryLogin',
@@ -52,6 +51,4 @@ const Login: FC<LoginLayoutProps> = ({ dispatch }) => {
   );
 };
 
-export default connect(({ login }: { login: ConnectState }) => ({ login }))(
-  Login,
-);
+export default connect()(Login);

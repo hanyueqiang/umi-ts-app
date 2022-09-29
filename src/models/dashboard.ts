@@ -1,18 +1,24 @@
 import { Effect, Reducer, history } from 'umi';
-import { message } from 'antd';
 import { queryCard } from '@/services/dashboard';
-
-import { ConnectState } from './connect.d';
 
 export interface DashboardState {
   data: DataProps[];
-  cardSource: any;
+  cardSource: totalDataType;
 }
 
 interface DataProps {
   id: string;
   name: string;
 }
+
+export type totalDataType = {
+  headCount?: number;
+  surveyCount?: number;
+  totalCount?: number;
+  deadLine?: string;
+  rate?: string;
+  lossRate?: string;
+};
 
 export interface DashboardType {
   namespace: 'dashboard';

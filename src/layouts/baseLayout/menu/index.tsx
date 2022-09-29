@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, connect, useLocation, Loading } from 'umi';
+import { Link, connect, useLocation } from 'umi';
 import { Menu } from 'antd';
 import { GlobalModelState } from '@/models/connect';
 import { queryKeysByPath } from '@/utils/utils';
@@ -8,7 +8,6 @@ const { SubMenu, Item } = Menu;
 
 export interface BasicLayoutProps {
   global: GlobalModelState;
-  loading: boolean;
 }
 
 const MenuContent: FC<BasicLayoutProps> = ({ global }) => {
@@ -55,8 +54,7 @@ const MenuContent: FC<BasicLayoutProps> = ({ global }) => {
 };
 
 export default connect(
-  ({ global, loading }: { global: GlobalModelState; loading: Loading }) => ({
+  ({ global }: { global: GlobalModelState }) => ({
     global,
-    loading: loading.models.index,
   }),
 )(MenuContent);

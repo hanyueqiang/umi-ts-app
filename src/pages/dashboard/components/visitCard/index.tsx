@@ -1,19 +1,13 @@
 import React, { FC, memo } from 'react';
 import { Row, Col, Tooltip, Skeleton } from 'antd';
+import { totalDataType } from '@/models/dashboard';
 import styles from '../../index.less';
 
 const userImg = require('@/assets/visit_user.png');
 const surveyImg = require('@/assets/visit_survey.png');
 const totalImg = require('@/assets/visit_total.png');
 
-type totalDataType = {
-  headCount?: number;
-  surveyCount?: number;
-  totalCount?: number;
-  deadLine?: string;
-  rate?: string;
-  lossRate?: string;
-};
+
 interface VisitCardProps {
   totalData: totalDataType;
   loading: boolean | undefined;
